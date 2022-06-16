@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import {AuthService} from './services/auth.service'
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'ng-chat';
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService) {}
 
-  public signInWithGoogle(){
+  public signInWithGoogle() {
     debugger;
-    this.authService.signInWithGoogle()
+    this.authService.signInWithGoogle();
   }
 }
