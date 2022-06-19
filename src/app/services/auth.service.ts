@@ -16,6 +16,7 @@ export class AuthService {
   private isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
+
   private userDetails$: Subject<User> = new Subject<User>();
 
   constructor(
@@ -40,6 +41,7 @@ export class AuthService {
       }
     });
   }
+
   public signInWithGoogle() {
     this.authLogin(new firebase.default.auth.GoogleAuthProvider());
   }
@@ -48,7 +50,7 @@ export class AuthService {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['/']);
-      // this.userDetails$.next(null);
+      this.userDetails$.next(undefined);
     });
   }
   public isLoggedIn(): Observable<boolean> {
