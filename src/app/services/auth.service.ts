@@ -1,3 +1,4 @@
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
@@ -58,7 +59,9 @@ export class AuthService {
   }
   private authLogin(provider: firebase.default.auth.AuthProvider) {
     return this.afAuth.signInWithPopup(provider).then((res) => {
+      this.isLoggedIn$.next(true);
       this.setUserData(res.user as User);
+      this.router.navigate(['./chat']);
     });
   }
 
